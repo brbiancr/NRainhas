@@ -7,14 +7,14 @@
     Copia para proximaPopulacao uma quantidade TAXAELITISMO dos individuos com maior fitness da populacaoAtual.
     Retorna do ultimo indiv�duo da popula��o
 */
-int elitismo(){
+void elitismo(int* indice){
     int i, j;
     for (i=0; i<TAXAELITISMO; i++){
         for (j=0; j<TAMANHOTABULEIRO; j++)
             proximaPopulacao[i][j] = populacaoAtual[TAMANHOPOPULACAO-(i+1)][j];
     }
 
-    return i;
+    *indice = i;
 }
 
 /*

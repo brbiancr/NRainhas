@@ -10,7 +10,7 @@
     Adiciona o filho na prozima gera��o.
     Retorna o indice do ultimo indiv�duo da popula��o.
 */
-int cruzamentoDoisPontos(int indice){
+void cruzamentoDoisPontos(int *indice){
     int i;
     int corte1, corte2;
     int filho[TAMANHOPOPULACAO];
@@ -46,15 +46,15 @@ int cruzamentoDoisPontos(int indice){
 
     // Adiciona o filho na popula��o
     for (i=0; i<TAMANHOTABULEIRO; i++)
-        proximaPopulacao[indice][i] = filho[i];
+        proximaPopulacao[*indice][i] = filho[i];
 
     // Mostra o filho gerado
     for (i=0; i<TAMANHOTABULEIRO; i++){
-        printf ("%d ", proximaPopulacao[indice][i]);
+        printf ("%d ", proximaPopulacao[*indice][i]);
     }
     printf ("\n");
 
-    return indice+1;
+    *indice = (*indice)+1;
 }
 
 /*
@@ -67,7 +67,7 @@ int cruzamentoDoisPontos(int indice){
     Adiciona o filho gerado na ger��o seguinte
     Retorna o indice do ultimo indiv�duo da popula��o.
 */
-int cruzamentoUmPonto(int indice){
+int cruzamentoUmPonto(int *indice){
     int i;
     int corte;
     int filho[TAMANHOTABULEIRO];
@@ -86,14 +86,14 @@ int cruzamentoUmPonto(int indice){
 
     // Adiciona o filho na populacao
     for (i=0; i<TAMANHOTABULEIRO; i++)
-        proximaPopulacao[indice][i] = filho[i];
+        proximaPopulacao[*indice][i] = filho[i];
     // Mostra o filho gerado
     printf("Filho: ");
     for (i=0; i<TAMANHOTABULEIRO; i++)
-        printf ("%d ", proximaPopulacao[indice][i]);
+        printf ("%d ", proximaPopulacao[*indice][i]);
     printf ("\n\n");
 
-    return indice+1;
+    *indice = (*indice)+1;
 }
 
 /*
@@ -106,7 +106,7 @@ int cruzamentoUmPonto(int indice){
                            Define de modo aleat�rio quais os pontos de muta��o.
                            Muta o individiduo filho
 */
-void mutacao(int indice){
+void mutacao(int *indice){
     int i, j;
     int quantidadeDePontos;
     int mutarIndividuo;
@@ -121,7 +121,7 @@ void mutacao(int indice){
 
         printf ("Individuo antes da mutacao: ");
         for (i=0; i<TAMANHOTABULEIRO; i++)
-            printf ("%d ", proximaPopulacao[indice-1][i]);
+            printf ("%d ", proximaPopulacao[(*indice)-1][i]);
         printf("\n");
 
         for (i=0; i<quantidadeDePontos; i++){
@@ -137,18 +137,17 @@ void mutacao(int indice){
         }
 
         for(i=0; i<quantidadeDePontos; i++){
-            proximaPopulacao[indice-1][posicao[i]] = rand()%TAMANHOTABULEIRO;
+            proximaPopulacao[(*indice)-1][posicao[i]] = rand()%TAMANHOTABULEIRO;
         }
 
         printf("Individuo mutado: ");
         for (i=0; i<TAMANHOTABULEIRO; i++)
-            printf("%d ", proximaPopulacao[indice-1][i]);
+            printf("%d ", proximaPopulacao[(*indice)-1][i]);
         printf ("\n");
     }
     else{
         printf ("*** NAO OCORRE MUTACAO! ***\n");
     }
-
 }
 
 

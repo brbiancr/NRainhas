@@ -1,8 +1,8 @@
 #include "main.h"
 
-int cruzamentoDoisPontos(int indice);
-int cruzamentoUmPonto(int indice);
-void mutacao(int indice);
+void cruzamentoDoisPontos(int*);
+void cruzamentoUmPonto(int*);
+void mutacao(int*);
 
 
 

@@ -4,6 +4,7 @@
     -------------------
     atualizaPopulacao()
     -------------------
+
 */
 void atualizaPopulacao(){
     int i, j;
@@ -15,43 +16,42 @@ void atualizaPopulacao(){
 }
 
 /*
-    ---------------------
-    inicializaPopulacao()
-    ---------------------
-    Inicializa de forma aleat�ria a popula��o inicial.
-    A popula��o inicial n�o deve ter individuos iguais.
-*/
-
-/*
     -----------------
     evoluiPopulacao()
     -----------------
     Evolui a populacao ate que a quantidade de evolucoes sejam alcancadas ou ate que uma solucao otima seja encontrada
 */
-void evoluiPopulacao(){
-    int i;
-    int indice;
+void evoluiPopulacao(int rodada){
+    int indiceInicio = 0;
+    int *indice = &indiceInicio;
 
-    printf("RODADA: %d\n", i+1);
-    indice = 0;
+    printf("RODADA: %d\n", rodada+1);
+
     fitness();
     ordenaPopulacao();
-    indice = elitismo();
+    elitismo(indice);
     do{
         //selecaoAleatoria();
         selecaoTorneio();
         //selecaoRoleta();
-        indice = cruzamentoUmPonto(indice);
-        //indice = cruzamentoDoisPontos(indice);
+        cruzamentoUmPonto(indice);
+        //indiceInicio = cruzamentoDoisPontos(indice);
         mutacao(indice);
         //printf ("Indice: %d\n", indice);
-    } while (indice < TAMANHOPOPULACAO);
+    } while (indiceInicio < TAMANHOPOPULACAO);
     printf ("\n");
     atualizaPopulacao();
     printf("Populacao Atual: \n");
     mostraPopulacao();
 }
 
+/*
+    ---------------------
+    inicializaPopulacao()
+    ---------------------
+    Inicializa de forma aleatoria a populacao inicial.
+    A populacao inicial nao deve ter individuos iguais.
+*/
 void inicializaPopulacao(){
     int i, j, k, l;
     int cont;
