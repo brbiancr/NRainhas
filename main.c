@@ -38,23 +38,9 @@ int main(){
 
     srand(time(NULL));
     inicializaPopulacao();
-    indice = 0;
-    fitness();
-    ordenaPopulacao();
-    indice = elitismo();
-    do{
-        //selecaoAleatoria();
-        selecaoTorneio();
-        //selecaoRoleta();
-        indice = cruzamentoUmPonto(indice);
-        //indice = cruzamentoDoisPontos(indice);
-        mutacao(indice);
-        //printf ("Indice: %d\n", indice);
-    } while (indice < TAMANHOPOPULACAO);
-
-    printf ("\n");
-    atualizaPopulacao();
-    mostraPopulacao();
+    for (i=0; i<RODADAS; i++){
+        evoluiPopulacao();
+    }
 
     // Liberando memoria alocada
     free (*populacaoAtual);
