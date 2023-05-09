@@ -7,6 +7,5 @@
 #define RODADAS 5
 
 // Vari�veis globais
-int **populacaoAtual;       // Manter
-int **proximaPopulacao;     // Local
-int *fitnessDaPopulacao;    //
+int **populacaoAtual;
+int *fitnessDaPopulacao;

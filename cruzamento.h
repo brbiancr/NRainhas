@@ -1,5 +1,5 @@
 #include "main.h"
 
-void cruzamentoDoisPontos(int*, int **pai);
-void cruzamentoUmPonto(int*, int **pai);
-void mutacao(int*);
+void cruzamentoDoisPontos(int*, int **pai, int **proximaPopulacao);
+void cruzamentoUmPonto(int*, int **pai, int **proximaPopulacao);
+void mutacao(int*, int **proximaPopulacao);

@@ -10,7 +10,7 @@
     Adiciona o filho na prozima gera��o.
     Retorna o indice do ultimo indiv�duo da popula��o.
 */
-void cruzamentoDoisPontos(int *indice, int **pai){
+void cruzamentoDoisPontos(int *indice, int **pai, int **proximaPopulacao){
     int i;
     int corte1, corte2;
     int filho[TAMANHOPOPULACAO];
@@ -67,7 +67,7 @@ void cruzamentoDoisPontos(int *indice, int **pai){
     Adiciona o filho gerado na ger��o seguinte
     Retorna o indice do ultimo indiv�duo da popula��o.
 */
-int cruzamentoUmPonto(int *indice, int **pai){
+int cruzamentoUmPonto(int *indice, int **pai, int **proximaPopulacao){
     int i;
     int corte;
     int filho[TAMANHOTABULEIRO];
@@ -106,7 +106,7 @@ int cruzamentoUmPonto(int *indice, int **pai){
                            Define de modo aleat�rio quais os pontos de muta��o.
                            Muta o individiduo filho
 */
-void mutacao(int *indice){
+void mutacao(int *indice, int **proximaPopulacao){
     int i, j;
     int quantidadeDePontos;
     int mutarIndividuo;

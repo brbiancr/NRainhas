@@ -6,7 +6,7 @@
     -------------------
 
 */
-void atualizaPopulacao(){
+void atualizaPopulacao(int **proximaPopulacao){
     int i, j;
 
     for (i=0; i<TAMANHOPOPULACAO; i++){
@@ -21,7 +21,7 @@ void atualizaPopulacao(){
     -----------------
     Evolui a populacao ate que a quantidade de evolucoes sejam alcancadas ou ate que uma solucao otima seja encontrada
 */
-void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnessTorneio, int **tabuleiro){
+void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnessTorneio, int **tabuleiro, int **proximaPopulacao){
     int indiceInicio = 0;
     int *indice = &indiceInicio;
 
@@ -29,18 +29,18 @@ void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnes
 
     fitness(tabuleiro);
     ordenaPopulacao();
-    elitismo(indice);
+    elitismo(indice, proximaPopulacao);
     do{
         //selecaoAleatoria(pai);
         selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
         //selecaoRoleta(pai);
-        cruzamentoUmPonto(indice);
-        //indiceInicio = cruzamentoDoisPontos(indice);
-        mutacao(indice);
+        cruzamentoUmPonto(indice, pai, proximaPopulacao);
+        //cruzamentoDoisPontos(indice, pai, proximaPopulacao);
+        mutacao(indice, proximaPopulacao);
         //printf ("Indice: %d\n", indice);
     } while (indiceInicio < TAMANHOPOPULACAO);
     printf ("\n");
-    atualizaPopulacao();
+    atualizaPopulacao(proximaPopulacao);
     printf("Populacao Atual: \n");
     mostraPopulacao();
 }
