@@ -21,7 +21,7 @@ void atualizaPopulacao(){
     -----------------
     Evolui a populacao ate que a quantidade de evolucoes sejam alcancadas ou ate que uma solucao otima seja encontrada
 */
-void evoluiPopulacao(int rodada, int **individuosTorneio){
+void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnessTorneio){
     int indiceInicio = 0;
     int *indice = &indiceInicio;
 
@@ -31,9 +31,9 @@ void evoluiPopulacao(int rodada, int **individuosTorneio){
     ordenaPopulacao();
     elitismo(indice);
     do{
-        //selecaoAleatoria();
-        selecaoTorneio(individuosTorneio);
-        //selecaoRoleta();
+        //selecaoAleatoria(pai);
+        selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
+        //selecaoRoleta(pai);
         cruzamentoUmPonto(indice);
         //indiceInicio = cruzamentoDoisPontos(indice);
         mutacao(indice);

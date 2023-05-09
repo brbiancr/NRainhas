@@ -39,7 +39,7 @@ void ordenaPopulacao(){
     Ordena os individuos do torneio de acordo com seu fitness.
     A ordena��o � feita em ordem crescente.
 */
-void ordenaTorneio(int **individuosTorneio){
+void ordenaTorneio(int **individuosTorneio, int *fitnessTorneio){
     int i, j, k;
     int auxiliar;
     int auxiliarA[TAMANHOTABULEIRO];

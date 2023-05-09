@@ -1,6 +1,6 @@
 #include "main.h"
 
 void elitismo(int*);
-void selecaoAleatoria();
-void selecaoRoleta();
-void selecaoTorneio(int *individuosTorneio);
+void selecaoAleatoria(int **pai);
+void selecaoRoleta(int **pai);
+void selecaoTorneio(int *individuosTorneio, int **pai, int *fitnessTorneio);

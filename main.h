@@ -10,7 +10,4 @@
 int **populacaoAtual;       // Manter
 int **proximaPopulacao;     // Local
 int *fitnessDaPopulacao;    //
-//int **individuosTorneio;    // Local
-int **pai;                  // Local
-int *fitnessTorneio;        // Local
 int **tabuleiro;             //

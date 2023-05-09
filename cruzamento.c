@@ -10,7 +10,7 @@
     Adiciona o filho na prozima gera��o.
     Retorna o indice do ultimo indiv�duo da popula��o.
 */
-void cruzamentoDoisPontos(int *indice){
+void cruzamentoDoisPontos(int *indice, int **pai){
     int i;
     int corte1, corte2;
     int filho[TAMANHOPOPULACAO];
@@ -67,7 +67,7 @@ void cruzamentoDoisPontos(int *indice){
     Adiciona o filho gerado na ger��o seguinte
     Retorna o indice do ultimo indiv�duo da popula��o.
 */
-int cruzamentoUmPonto(int *indice){
+int cruzamentoUmPonto(int *indice, int **pai){
     int i;
     int corte;
     int filho[TAMANHOTABULEIRO];

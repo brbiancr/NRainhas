@@ -24,7 +24,7 @@ void elitismo(int* indice){
     Seleciona de forma aleat�ria os dois individuos pais.
     O processo ocorre at� que ambos os pais sejam diferentes entre si.
 */
-void selecaoAleatoria(){
+void selecaoAleatoria(int **pai){
     int i, j;
     int individuo;
     int cont = 0;
@@ -63,7 +63,7 @@ void selecaoAleatoria(){
     Gira a roleta e seleciona um pai.
     O precesso se repete at� que exista dois pais diferentes entre si.
 */
-void selecaoRoleta(){
+void selecaoRoleta(int **pai){
     int i, j;
     int k = 0;
     int somaFitness = 0;
@@ -123,7 +123,7 @@ void selecaoRoleta(){
     O individuo com maior aptid�o entre os selecionados � escolhido para ser um pai.
     O precesso se repete at� que exista dois pais diferentes entre si.
 */
-void selecaoTorneio(int **individuosTorneio){
+void selecaoTorneio(int **individuosTorneio, int **pai, int *fitnessTorneio){
     int i, j, k;
     int individuo[QUANTIDADEINDIVIDUOSPORTORNEIO];
     int cont = 0;
@@ -148,7 +148,7 @@ void selecaoTorneio(int **individuosTorneio){
         }
 
         // Ordenar os individuos do torneio
-        ordenaTorneio(individuosTorneio);
+        ordenaTorneio(individuosTorneio, fitnessTorneio);
 
         // Seleciona o individuo com maior fitness para ser o pai
         printf("Pai %d selecionado: ", k);
