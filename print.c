@@ -24,7 +24,7 @@ void mostraPopulacao(){
     0 indica posicao vazia
     1 indica rainha
 */
-void mostraTabuleiro(){
+void mostraTabuleiro(int **tabuleiro){
     int i, j;
 
     for (i=0; i<TAMANHOTABULEIRO; i++){

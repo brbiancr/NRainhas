@@ -6,7 +6,7 @@
     ---------
     Avalia a aptid�o de cada individuo da popula��o.
 */
-void fitness(){
+void fitness(int **tabuleiro){
     int i, j, k, l, m;
     int fitnessRainha, colisao;
     int auxiliar1, auxiliar2;
@@ -14,9 +14,9 @@ void fitness(){
     for (i=0; i<TAMANHOPOPULACAO; i++){
         fitnessDaPopulacao[i]= 0 ;
 
-        posicionaRainhas(i);
+        posicionaRainhas(i, tabuleiro);
 
-        //mostraTabuleiro();
+        //mostraTabuleiro(tabuleiro);
 
         for (j=0; j<TAMANHOTABULEIRO; j++){
             for (k=0; k<TAMANHOTABULEIRO; k++){
@@ -85,7 +85,7 @@ void fitness(){
     0 indica posi��o vazia
     1 indica Rainhas
 */
-void posicionaRainhas(int individuo){
+void posicionaRainhas(int individuo, int **tabuleiro){
     int i, j;
     int linhaDaRainha;
 

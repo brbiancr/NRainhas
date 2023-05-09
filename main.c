@@ -6,7 +6,7 @@
 int main(){
     int i;
     int *fitnessTorneio;
-    int **individuosTorneio, **pai;
+    int **individuosTorneio, **pai, **tabuleiro;
 
     // Alocando memoria
     populacaoAtual = (int**) malloc(sizeof(int*) * TAMANHOPOPULACAO);
@@ -40,7 +40,7 @@ int main(){
     srand(time(NULL));
     inicializaPopulacao();
     for (i=0; i<RODADAS; i++){
-        evoluiPopulacao(i, individuosTorneio, pai, fitnessTorneio);
+        evoluiPopulacao(i, individuosTorneio, pai, fitnessTorneio, tabuleiro);
     }
 
     // Liberando memoria alocada

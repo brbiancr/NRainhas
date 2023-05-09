@@ -1,4 +1,4 @@
 #include "main.h"
 
-void fitness();
-void posicionaRainhas(int individuo);
+void fitness(int **tabuleiro);
+void posicionaRainhas(int individuo, int **tabuleiro);

@@ -21,13 +21,13 @@ void atualizaPopulacao(){
     -----------------
     Evolui a populacao ate que a quantidade de evolucoes sejam alcancadas ou ate que uma solucao otima seja encontrada
 */
-void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnessTorneio){
+void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnessTorneio, int **tabuleiro){
     int indiceInicio = 0;
     int *indice = &indiceInicio;
 
     printf("RODADA: %d\n", rodada+1);
 
-    fitness();
+    fitness(tabuleiro);
     ordenaPopulacao();
     elitismo(indice);
     do{
