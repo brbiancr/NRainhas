@@ -3,4 +3,4 @@
 void elitismo(int*);
 void selecaoAleatoria();
 void selecaoRoleta();
-void selecaoTorneio();
+void selecaoTorneio(int *individuosTorneio);

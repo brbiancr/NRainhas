@@ -1,4 +1,4 @@
 #include "main.h"
 
 void ordenaPopulacao();
-void ordenaTorneio();
+void ordenaTorneio(int **individuosTorneio);

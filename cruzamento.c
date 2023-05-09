@@ -149,6 +149,3 @@ void mutacao(int *indice){
         printf ("*** NAO OCORRE MUTACAO! ***\n");
     }
 }
-
-
-

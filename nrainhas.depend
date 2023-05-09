@@ -1,25 +1,25 @@
 # depslib dependency file v1.0
-1683578212 source:c:\users\biby_\desktop\ic\nrainhas\cruzamento.c
+1683629136 source:c:\users\biby_\desktop\ic\nrainhas\cruzamento.c
 	"main.h"
 
-1683567100 c:\users\biby_\desktop\ic\nrainhas\main.h
+1683629282 c:\users\biby_\desktop\ic\nrainhas\main.h
 
-1683551628 source:c:\users\biby_\desktop\ic\nrainhas\fitness.c
+1683629135 source:c:\users\biby_\desktop\ic\nrainhas\fitness.c
 	"main.h"
 
-1683551693 source:c:\users\biby_\desktop\ic\nrainhas\ordenacao.c
+1683581150 source:c:\users\biby_\desktop\ic\nrainhas\ordenacao.c
 	"main.h"
 
-1683567498 source:c:\users\biby_\desktop\ic\nrainhas\populacao.c
+1683629428 source:c:\users\biby_\desktop\ic\nrainhas\populacao.c
 	"main.h"
 
-1683551833 source:c:\users\biby_\desktop\ic\nrainhas\print.c
+1683629218 source:c:\users\biby_\desktop\ic\nrainhas\print.c
 	"main.h"
 
-1683577933 source:c:\users\biby_\desktop\ic\nrainhas\selecao.c
+1683629466 source:c:\users\biby_\desktop\ic\nrainhas\selecao.c
 	"main.h"
 
-1683567302 source:c:\users\biby_\desktop\ic\nrainhas\main.c
+1683629510 source:c:\users\biby_\desktop\ic\nrainhas\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>

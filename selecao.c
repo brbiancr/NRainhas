@@ -123,7 +123,7 @@ void selecaoRoleta(){
     O individuo com maior aptid�o entre os selecionados � escolhido para ser um pai.
     O precesso se repete at� que exista dois pais diferentes entre si.
 */
-void selecaoTorneio(){
+void selecaoTorneio(int **individuosTorneio){
     int i, j, k;
     int individuo[QUANTIDADEINDIVIDUOSPORTORNEIO];
     int cont = 0;
@@ -148,7 +148,7 @@ void selecaoTorneio(){
         }
 
         // Ordenar os individuos do torneio
-        ordenaTorneio();
+        ordenaTorneio(individuosTorneio);
 
         // Seleciona o individuo com maior fitness para ser o pai
         printf("Pai %d selecionado: ", k);

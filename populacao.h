@@ -1,5 +1,5 @@
 #include "main.h"
 
 void atualizaPopulacao();
-void evoluiPopulacao(int);
+void evoluiPopulacao(int i, int **individuosTorneio);
 void inicializaPopulacao();
