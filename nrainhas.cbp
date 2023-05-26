@@ -31,9 +31,34 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="cruzamento.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cruzamento.h" />
+		<Unit filename="fitness.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fitness.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="main.h" />
+		<Unit filename="ordenacao.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ordenacao.h" />
+		<Unit filename="populacao.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="populacao.h" />
+		<Unit filename="print.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="print.h" />
+		<Unit filename="selecao.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="selecao.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

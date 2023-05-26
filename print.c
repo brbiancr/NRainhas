@@ -5,14 +5,17 @@
     mostraPopulacao()
     -----------------
 */
-void mostraPopulacao(){
+void mostraPopulacao(int **tabuleiro){
     int i, j;
+    float mediaFitness = 0;
     for (i=0; i<TAMANHOPOPULACAO; i++){
         for (j=0; j<TAMANHOTABULEIRO; j++){
             printf("%d ", populacaoAtual[i][j]);
         }
-        printf("\n");
+        printf(",Fitness: %d\n", fitnessDaPopulacao[i]);
+        mediaFitness += fitnessDaPopulacao[i];
     }
+    printf("Média fitness: %f", mediaFitness/TAMANHOPOPULACAO);
     printf("\n");
 }
 

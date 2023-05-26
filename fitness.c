@@ -6,7 +6,7 @@
     ---------
     Avalia a aptid�o de cada individuo da popula��o.
 */
-void fitness(int **tabuleiro){
+void fitness(int **tabuleiro, int *fitnessDaPopulacao){
     int i, j, k, l, m;
     int fitnessRainha, colisao;
     int auxiliar1, auxiliar2;

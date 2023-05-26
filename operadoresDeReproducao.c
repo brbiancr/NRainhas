@@ -149,3 +149,4 @@ void mutacao(int *indice, int **proximaPopulacao){
         printf ("*** NAO OCORRE MUTACAO! ***\n");
     }
 }
+

@@ -27,12 +27,12 @@ void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnes
 
     printf("RODADA: %d\n", rodada+1);
 
-    fitness(tabuleiro);
+    fitness(tabuleiro, fitnessDaPopulacao);
     ordenaPopulacao();
     elitismo(indice, proximaPopulacao);
     do{
-        //selecaoAleatoria(pai);
-        selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
+        selecaoAleatoria(pai);
+        //selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
         //selecaoRoleta(pai);
         cruzamentoUmPonto(indice, pai, proximaPopulacao);
         //cruzamentoDoisPontos(indice, pai, proximaPopulacao);
@@ -42,6 +42,7 @@ void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnes
     printf ("\n");
     atualizaPopulacao(proximaPopulacao);
     printf("Populacao Atual: \n");
+    fitness(tabuleiro, fitnessDaPopulacao);
     mostraPopulacao();
 }
 
