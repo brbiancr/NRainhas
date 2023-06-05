@@ -2,7 +2,7 @@
 1683634431 source:c:\users\biby_\desktop\ic\nrainhas\cruzamento.c
 	"main.h"
 
-1685098997 c:\users\biby_\desktop\ic\nrainhas\main.h
+1685622036 c:\users\biby_\desktop\ic\nrainhas\main.h
 
 1685045308 source:c:\users\biby_\desktop\ic\nrainhas\fitness.c
 	"main.h"
@@ -10,7 +10,7 @@
 1683629920 source:c:\users\biby_\desktop\ic\nrainhas\ordenacao.c
 	"main.h"
 
-1685099325 source:c:\users\biby_\desktop\ic\nrainhas\populacao.c
+1685623030 source:c:\users\biby_\desktop\ic\nrainhas\populacao.c
 	"main.h"
 
 1685099324 source:c:\users\biby_\desktop\ic\nrainhas\print.c
@@ -25,6 +25,6 @@
 	<time.h>
 	"main.h"
 
-1685098987 source:c:\users\biby_\desktop\ic\nrainhas\operadoresdereproducao.c
+1685109728 source:c:\users\biby_\desktop\ic\nrainhas\operadoresdereproducao.c
 	"main.h"
 

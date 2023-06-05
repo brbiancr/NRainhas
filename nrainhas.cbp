@@ -31,10 +31,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="cruzamento.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="cruzamento.h" />
 		<Unit filename="fitness.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -43,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="main.h" />
+		<Unit filename="operadoresDeReproducao.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="operadoresDeReproducao.h" />
 		<Unit filename="ordenacao.c">
 			<Option compilerVar="CC" />
 		</Unit>

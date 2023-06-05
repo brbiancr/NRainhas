@@ -31,11 +31,11 @@ void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnes
     ordenaPopulacao();
     elitismo(indice, proximaPopulacao);
     do{
-        selecaoAleatoria(pai);
-        //selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
+        //selecaoAleatoria(pai);
         //selecaoRoleta(pai);
-        cruzamentoUmPonto(indice, pai, proximaPopulacao);
-        //cruzamentoDoisPontos(indice, pai, proximaPopulacao);
+        selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
+        //cruzamentoUmPonto(indice, pai, proximaPopulacao);
+        cruzamentoDoisPontos(indice, pai, proximaPopulacao);
         mutacao(indice, proximaPopulacao);
         //printf ("Indice: %d\n", indice);
     } while (indiceInicio < TAMANHOPOPULACAO);

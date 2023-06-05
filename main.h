@@ -1,10 +1,10 @@
 // Defines
-#define TAMANHOPOPULACAO 10
+#define TAMANHOPOPULACAO 30
 #define TAMANHOTABULEIRO 8
 #define QUANTIDADEINDIVIDUOSPORTORNEIO 3
 #define TAXAELITISMO 2
-#define TAXAMUTACAO 0.01
-#define RODADAS 5
+#define TAXAMUTACAO 0.1
+#define RODADAS 20
 
 // Vari�veis globais
 int **populacaoAtual;

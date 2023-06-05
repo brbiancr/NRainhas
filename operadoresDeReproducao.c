@@ -115,7 +115,7 @@ void mutacao(int *indice, int **proximaPopulacao){
 
     if (mutarIndividuo == 0){
         printf ("*** OCORRE MUTACAO! ***\n");
-        quantidadeDePontos = rand()%TAMANHOPOPULACAO;
+        quantidadeDePontos = rand()%TAMANHOTABULEIRO;
         printf ("Quantidade de pontos de mutacao: %d\n", quantidadeDePontos);
         int posicao[quantidadeDePontos];
 
@@ -149,4 +149,3 @@ void mutacao(int *indice, int **proximaPopulacao){
         printf ("*** NAO OCORRE MUTACAO! ***\n");
     }
 }
-
