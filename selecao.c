@@ -9,7 +9,7 @@
 */
 void elitismo(int* indice, int **proximaPopulacao){
     int i, j;
-    for (i=0; i<TAXAELITISMO*100; i++){
+    for (i=0; i<(TAMANHOPOPULACAO*(TAXAELITISMO*100))/100; i++){
         for (j=0; j<TAMANHOTABULEIRO; j++)
             proximaPopulacao[i][j] = populacaoAtual[TAMANHOPOPULACAO-(i+1)][j];
     }
