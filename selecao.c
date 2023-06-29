@@ -1,11 +1,12 @@
+#include <stdio.h>
 #include "main.h"
 
 /*
     ----------
     elitismo()
     ----------
-    Copia para proximaPopulacao uma quantidade TAXAELITISMO dos individuos com maior fitness da populacaoAtual.
-    Retorna do ultimo indiv�duo da popula��o
+    Copia para proximaPopulacao uma porcentagem TAXAELITISMO dos individuos com maior fitness da populacaoAtual.
+    Retorna a posicao do ultimo individuo da populacao
 */
 void elitismo(int* indice, int **proximaPopulacao){
     int i, j;
@@ -32,14 +33,12 @@ void selecaoAleatoria(int **pai){
     for (i=0; i<2; i++){
 
         individuo = (rand()%TAMANHOPOPULACAO);
-        printf ("Pai %d: individuo %d, ",i , individuo);
+        //printf ("Pai %d: individuo %d, ",i , individuo);
         for (j=0; j<TAMANHOTABULEIRO; j++){
             pai[i][j] = populacaoAtual[individuo][j];
-            printf("%d ", pai[i][j]);
+            //printf("%d ", pai[i][j]);
         }
-        printf("\n");
-
-        printf("\n");
+        //printf("\n");
 
         if (i>0){
             for (j=0; j<TAMANHOTABULEIRO; j++){
@@ -49,7 +48,7 @@ void selecaoAleatoria(int **pai){
         }
 
         if (cont == TAMANHOTABULEIRO){
-            printf ("PAIS IGUAIS, SELECIONE PAIS DIFERENTES!\n\n");
+            //printf ("PAIS IGUAIS, SELECIONE PAIS DIFERENTES!\n\n");
             i--;
         }
     }
@@ -73,14 +72,14 @@ void selecaoRoleta(int **pai){
     for (i=0; i<TAMANHOPOPULACAO; i++)
         somaFitness += fitnessDaPopulacao[i];
 
-    printf ("-> Soma dos fitness: %d\n\n", somaFitness);
+    //printf ("-> Soma dos fitness: %d\n\n", somaFitness);
 
 
     for(k=0; k<2; k++){
         cont = 0;
         // Roda a roleta (sorteia um numero aleatorio)
         numeroSorteado = rand()%somaFitness;
-        printf("NUMERO SORTEADO: %d\n", numeroSorteado);
+        //printf("NUMERO SORTEADO: %d\n", numeroSorteado);
 
         // Seleciona um pai
         fitnessAcumulado = 0;
@@ -101,10 +100,11 @@ void selecaoRoleta(int **pai){
         }
 
         if (cont == TAMANHOTABULEIRO){
-            printf ("PAIS IGUAIS, SELECIONE PAIS DIFERENTES!\n");
+            //printf ("PAIS IGUAIS, SELECIONE PAIS DIFERENTES!\n");
             k--;
         }
         // Mostra o pai sorteado
+        /*
         else{
             printf ("Pai %d: ", k+1);
             for (i=0; i<TAMANHOTABULEIRO; i++)
@@ -112,6 +112,7 @@ void selecaoRoleta(int **pai){
             printf ("\n");
         }
         printf ("\n");
+        */
     }
 }
 
@@ -147,16 +148,15 @@ void selecaoTorneio(int **individuosTorneio, int **pai, int *fitnessTorneio){
 
         }
 
-        // Ordenar os individuos do torneio
         ordenaTorneio(individuosTorneio, fitnessTorneio);
 
         // Seleciona o individuo com maior fitness para ser o pai
-        printf("Pai %d selecionado: ", k);
+        //printf("Pai %d selecionado: ", k);
         for (i=0; i<TAMANHOTABULEIRO; i++){
             pai[k][i] = individuosTorneio[QUANTIDADEINDIVIDUOSPORTORNEIO-1][i];
-            printf("%d ", pai[k][i]);
+            //printf("%d ", pai[k][i]);
         }
-        printf("\n\n");
+        //printf("\n\n");
     }
 
     // Verifica se os pais sao iguais
@@ -168,12 +168,12 @@ void selecaoTorneio(int **individuosTorneio, int **pai, int *fitnessTorneio){
     }
 
     if (cont == TAMANHOTABULEIRO){
-        printf ("PAIS IGUAIS, SELECIONE PAIS DIFERENTES!\n\n");
-        printf ("Pai 1: ");
+        //printf ("PAIS IGUAIS, SELECIONE PAIS DIFERENTES!\n\n");
+        //printf ("Pai 1: ");
         for (i=0; i<TAMANHOTABULEIRO; i++){
             pai[1][i] = individuosTorneio[QUANTIDADEINDIVIDUOSPORTORNEIO-2][i];
-            printf ("%d ", pai[1][i]);
+            //printf ("%d ", pai[1][i]);
         }
-        printf ("\n");
+        //printf ("\n");
     }
 }

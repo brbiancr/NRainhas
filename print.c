@@ -1,22 +1,46 @@
+#include <stdio.h>
 #include "main.h"
+
 
 /*
     -----------------
     mostraPopulacao()
     -----------------
+
+    Mostra cada individuo da populacao seguido do seu fitness.
+    Mostra o individuo com maior fitness.
+    Mostra a media de fitness da populacao.
+    Salva todos esses dados em um arquivo "dadosNRainhas.txt"
 */
-void mostraPopulacao(int **tabuleiro){
+void mostraPopulacao(){
     int i, j;
+    FILE *arquivo;
+
+    arquivo = fopen("dadosNRainhas.txt", "a+");
+    if(arquivo == NULL){
+        printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
+        return 0;
+    }
+
+    fprintf(arquivo, "- Populacao Final -\n");
+
     float mediaFitness = 0;
     for (i=0; i<TAMANHOPOPULACAO; i++){
         for (j=0; j<TAMANHOTABULEIRO; j++){
             printf("%d ", populacaoAtual[i][j]);
+            fprintf(arquivo, "%d ", populacaoAtual[i][j]);
         }
         printf(",Fitness: %d\n", fitnessDaPopulacao[i]);
+        fprintf(arquivo, "Fitness: %d\n", fitnessDaPopulacao[i]);
         mediaFitness += fitnessDaPopulacao[i];
     }
-    printf("Média fitness: %f", mediaFitness/TAMANHOPOPULACAO);
-    printf("\n");
+
+    printf("Maior fitness: %d\n", fitnessDaPopulacao[TAMANHOPOPULACAO-1]);
+    printf("Media fitness: %f\n", mediaFitness/TAMANHOPOPULACAO);
+    fprintf(arquivo, "Maior fitness: %d\n", fitnessDaPopulacao[TAMANHOPOPULACAO-1]);
+    fprintf(arquivo, "Media fitness: %f\n\n", mediaFitness/TAMANHOPOPULACAO);
+
+    fclose(arquivo);
 }
 
 /*

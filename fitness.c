@@ -4,7 +4,7 @@
     ---------
     fitness()
     ---------
-    Avalia a aptid�o de cada individuo da popula��o.
+    Avalia a aptidao de cada individuo da populacao.
 */
 void fitness(int **tabuleiro, int *fitnessDaPopulacao){
     int i, j, k, l, m;
@@ -82,7 +82,7 @@ void fitness(int **tabuleiro, int *fitnessDaPopulacao){
     posicionaRainhas()
     ------------------
     Posiciona as rainhas no tabuleiro
-    0 indica posi��o vazia
+    0 indica posicao vazia
     1 indica Rainhas
 */
 void posicionaRainhas(int individuo, int **tabuleiro){

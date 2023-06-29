@@ -4,9 +4,25 @@
 #include "main.h"
 
 int main(){
-    int i;
+    int i, result1, result2;
     int *fitnessTorneio;
     int **individuosTorneio, **pai, **tabuleiro, **proximaPopulacao;
+    FILE *arquivo;
+
+    arquivo = fopen("dadosNRainhas.txt", "a+");
+    if(arquivo == NULL){
+        printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
+        return 0;
+    } else{
+        fprintf(arquivo, "Tamanho da populacao: %d\n", TAMANHOPOPULACAO);
+        fprintf(arquivo, "Tamanho do tabuleiro: %d\n", TAMANHOTABULEIRO);
+        fprintf(arquivo, "Quantidade de individuos por torneio: %d\n", QUANTIDADEINDIVIDUOSPORTORNEIO);
+        fprintf(arquivo, "Taxa de elitismo: %.2f\n", TAXAELITISMO);
+        fprintf(arquivo, "Taxa de mutacao: %.2f\n", TAXAMUTACAO);
+        fprintf(arquivo, "Quantidade de rodadas: %d\n", RODADAS);
+        fclose(arquivo);
+    }
+
 
     // Alocando memoria
     populacaoAtual = (int**) malloc(sizeof(int*) * TAMANHOPOPULACAO);
@@ -42,6 +58,9 @@ int main(){
     for (i=0; i<RODADAS; i++){
         evoluiPopulacao(i, individuosTorneio, pai, fitnessTorneio, tabuleiro, proximaPopulacao);
     }
+
+    printf("- Populacao Final -\n");
+    mostraPopulacao();
 
     // Liberando memoria alocada
     free (*populacaoAtual);

@@ -1,4 +1,4 @@
 #include "main.h"
 
-void mostraPopulacao(int **tabuleiro);
+void mostraPopulacao();
 void mostraTabuleiro(int **tabuleiro);

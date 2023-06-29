@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /*
@@ -25,25 +26,25 @@ void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnes
     int indiceInicio = 0;
     int *indice = &indiceInicio;
 
-    printf("RODADA: %d\n", rodada+1);
+    //printf("RODADA: %d\n", rodada+1);
 
     fitness(tabuleiro, fitnessDaPopulacao);
     ordenaPopulacao();
     elitismo(indice, proximaPopulacao);
     do{
-        //selecaoAleatoria(pai);
+        selecaoAleatoria(pai);
         //selecaoRoleta(pai);
-        selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
-        //cruzamentoUmPonto(indice, pai, proximaPopulacao);
-        cruzamentoDoisPontos(indice, pai, proximaPopulacao);
+        //selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
+        cruzamentoUmPonto(indice, pai, proximaPopulacao);
+        //cruzamentoDoisPontos(indice, pai, proximaPopulacao);
         mutacao(indice, proximaPopulacao);
         //printf ("Indice: %d\n", indice);
     } while (indiceInicio < TAMANHOPOPULACAO);
-    printf ("\n");
+
     atualizaPopulacao(proximaPopulacao);
-    printf("Populacao Atual: \n");
     fitness(tabuleiro, fitnessDaPopulacao);
-    mostraPopulacao();
+    ordenaPopulacao();
+
 }
 
 /*
@@ -77,6 +78,9 @@ void inicializaPopulacao(){
             } while(cont == TAMANHOTABULEIRO);
         }
     }
+
+    /*
     printf ("***POPULACAO INICIAL***\n");
     mostraPopulacao();
+    */
 }

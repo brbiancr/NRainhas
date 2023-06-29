@@ -4,8 +4,8 @@
     -----------------
     ordenaPopulacao()
     -----------------
-    Ordena os individuos da popula��o de acordo com seu fitness.
-    A ordena��o � feita em ordem crescente.
+    Ordena os individuos da populacao de acordo com seu fitness.
+    A ordenacao e feita em ordem crescente.
 */
 void ordenaPopulacao(){
     int i, j, k;
@@ -26,10 +26,6 @@ void ordenaPopulacao(){
         for (k=0; k<TAMANHOTABULEIRO; k++)
             populacaoAtual[j][k] = auxiliarA[k];
     }
-
-    printf ("***POPULACAO ORDENADA PELO FITNESS***: \n");
-    mostraPopulacao();
-    printf("\n");
 }
 
 /*
