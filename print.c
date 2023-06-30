@@ -16,13 +16,13 @@ void mostraPopulacao(){
     int i, j;
     FILE *arquivo;
 
-    arquivo = fopen("dadosNRainhas.txt", "a+");
+    arquivo = fopen("dadosNRainhas.xls", "a+");
     if(arquivo == NULL){
         printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
         return 0;
     }
 
-    fprintf(arquivo, "- Populacao Final -\n");
+    fprintf(arquivo, "- Populacao Final -\t - Fitness -\n");
 
     float mediaFitness = 0;
     for (i=0; i<TAMANHOPOPULACAO; i++){
@@ -30,15 +30,15 @@ void mostraPopulacao(){
             printf("%d ", populacaoAtual[i][j]);
             fprintf(arquivo, "%d ", populacaoAtual[i][j]);
         }
-        printf(",Fitness: %d\n", fitnessDaPopulacao[i]);
-        fprintf(arquivo, "Fitness: %d\n", fitnessDaPopulacao[i]);
+        printf("Fitness: %d\n", fitnessDaPopulacao[i]);
+        fprintf(arquivo, "\t%d\n", fitnessDaPopulacao[i]);
         mediaFitness += fitnessDaPopulacao[i];
     }
 
     printf("Maior fitness: %d\n", fitnessDaPopulacao[TAMANHOPOPULACAO-1]);
     printf("Media fitness: %f\n", mediaFitness/TAMANHOPOPULACAO);
-    fprintf(arquivo, "Maior fitness: %d\n", fitnessDaPopulacao[TAMANHOPOPULACAO-1]);
-    fprintf(arquivo, "Media fitness: %f\n\n", mediaFitness/TAMANHOPOPULACAO);
+    fprintf(arquivo, "Maior fitness\t %d\n", fitnessDaPopulacao[TAMANHOPOPULACAO-1]);
+    fprintf(arquivo, "Media fitness\t %f\n", mediaFitness/TAMANHOPOPULACAO);
 
     fclose(arquivo);
 }

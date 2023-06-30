@@ -32,11 +32,22 @@ void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnes
     ordenaPopulacao();
     elitismo(indice, proximaPopulacao);
     do{
-        selecaoAleatoria(pai);
-        //selecaoRoleta(pai);
-        //selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
-        cruzamentoUmPonto(indice, pai, proximaPopulacao);
-        //cruzamentoDoisPontos(indice, pai, proximaPopulacao);
+        switch (TIPODESELECAO){
+            case 1: selecaoAleatoria(pai);
+                    break;
+            case 2: selecaoRoleta(pai);
+                    break;
+            case 3: selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
+                    break;
+        }
+
+        switch (TIPODECRUZAMENTO){
+            case 1: cruzamentoUmPonto(indice, pai, proximaPopulacao);
+                    break;
+            case 2: cruzamentoDoisPontos(indice, pai, proximaPopulacao);
+                    break;
+        }
+
         mutacao(indice, proximaPopulacao);
         //printf ("Indice: %d\n", indice);
     } while (indiceInicio < TAMANHOPOPULACAO);

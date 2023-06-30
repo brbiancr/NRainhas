@@ -4,22 +4,39 @@
 #include "main.h"
 
 int main(){
+    // Calcular o tempo de execucao do programa
+    double time_spent = 0.0;
+    clock_t begin = clock();
+
     int i, result1, result2;
     int *fitnessTorneio;
     int **individuosTorneio, **pai, **tabuleiro, **proximaPopulacao;
     FILE *arquivo;
 
-    arquivo = fopen("dadosNRainhas.txt", "a+");
+    arquivo = fopen("dadosNRainhas.xls", "a+");
     if(arquivo == NULL){
         printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
+        fclose(arquivo);
         return 0;
     } else{
-        fprintf(arquivo, "Tamanho da populacao: %d\n", TAMANHOPOPULACAO);
-        fprintf(arquivo, "Tamanho do tabuleiro: %d\n", TAMANHOTABULEIRO);
-        fprintf(arquivo, "Quantidade de individuos por torneio: %d\n", QUANTIDADEINDIVIDUOSPORTORNEIO);
-        fprintf(arquivo, "Taxa de elitismo: %.2f\n", TAXAELITISMO);
-        fprintf(arquivo, "Taxa de mutacao: %.2f\n", TAXAMUTACAO);
-        fprintf(arquivo, "Quantidade de rodadas: %d\n", RODADAS);
+        fprintf(arquivo, "Tamanho da populacao\t%d\n", TAMANHOPOPULACAO);
+        fprintf(arquivo, "Tamanho do tabuleiro\t %d\n", TAMANHOTABULEIRO);
+        fprintf(arquivo, "Quantidade de individuos por torneio\t %d\n", QUANTIDADEINDIVIDUOSPORTORNEIO);
+        fprintf(arquivo, "Taxa de elitismo\t %.2f\n", TAXAELITISMO);
+        fprintf(arquivo, "Taxa de mutacao\t %.2f\n", TAXAMUTACAO);
+        fprintf(arquivo, "Quantidade de rodadas\t %d\n", RODADAS);
+        fprintf(arquivo, "Tipo de selecao\t");
+        if(TIPODESELECAO == 1)
+            fprintf(arquivo, "Selecao aleatoria\n");
+        if(TIPODESELECAO == 2)
+            fprintf(arquivo, "Selecao por roleta\n");
+        if(TIPODESELECAO == 3)
+            fprintf(arquivo, "Selecao por torneio\n");
+        fprintf(arquivo, "Tipo de cruzamento\t ");
+        if(TIPODECRUZAMENTO == 1)
+            fprintf(arquivo, "Cruzamento de um ponto\n");
+        if(TIPODECRUZAMENTO == 2)
+            fprintf(arquivo, "Cruzamento de dois pontos\n");
         fclose(arquivo);
     }
 
@@ -75,6 +92,20 @@ int main(){
     free (fitnessTorneio);
     free (*tabuleiro);
     free (tabuleiro);
+
+    // Calcular o tempo de execucao do programa
+    clock_t end = clock();
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Tempo de execucao: %f", time_spent);
+    arquivo = fopen("dadosNRainhas.xls", "a+");
+    if(arquivo == NULL){
+        printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
+        fclose(arquivo);
+        return 0;
+    } else{
+        fprintf(arquivo, "Tempo de execucao\t %f", time_spent);
+        fclose(arquivo);
+    }
 
     return 0;
 }
