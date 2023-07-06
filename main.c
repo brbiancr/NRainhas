@@ -103,7 +103,7 @@ int main(){
         fclose(arquivo);
         return 0;
     } else{
-        fprintf(arquivo, "Tempo de execucao\t %f", time_spent);
+        fprintf(arquivo, "Tempo de execucao\t %f\n\n", time_spent);
         fclose(arquivo);
     }
 

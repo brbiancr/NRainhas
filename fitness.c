@@ -4,7 +4,7 @@
     ---------
     fitness()
     ---------
-    Avalia a aptidao de cada individuo da populacao.
+    Avalia a aptidao de todos os individuos da populacao.
 */
 void fitness(int **tabuleiro, int *fitnessDaPopulacao){
     int i, j, k, l, m;
@@ -92,7 +92,7 @@ void posicionaRainhas(int individuo, int **tabuleiro){
     for (i=0; i<TAMANHOTABULEIRO; i++){
         for (j=0; j<TAMANHOTABULEIRO; j++){
             linhaDaRainha = populacaoAtual[individuo][j];
-            if (i == (linhaDaRainha-1))
+            if (i == (linhaDaRainha))
                 tabuleiro[i][j] = 1;
             else
                 tabuleiro[i][j] = 0;
