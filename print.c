@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "main.h"
-
+#include "print.h"
 
 /*
     -----------------
@@ -21,7 +21,6 @@ void mostraPopulacao(){
     arquivo = fopen("dadosNRainhas.xls", "a+");
     if(arquivo == NULL){
         printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
-        return 0;
     }
 
     fprintf(arquivo, "- Populacao Final -\t - Fitness -\n");
@@ -39,7 +38,6 @@ void mostraPopulacao(){
 
     // Calcula o desvio padrao
     mediaFitness = mediaFitness/TAMANHOPOPULACAO;
-    float p = 0;
     float variacoes = 0;
     for (i=0; i<TAMANHOPOPULACAO; i++) {
         variacoes += pow((fitnessDaPopulacao[i] - mediaFitness), 2);
@@ -51,8 +49,8 @@ void mostraPopulacao(){
     printf("Media fitness: %f\n", mediaFitness);
     printf("Desvio padrao: %f\n", sigma);
     fprintf(arquivo, "Maior fitness\t %d\n", fitnessDaPopulacao[TAMANHOPOPULACAO-1]);
-    fprintf(arquivo, "Media fitness\t %f\n", mediaFitness);
-    fprintf(arquivo, "Devio padrao\n %f\n", sigma);
+    fprintf(arquivo, "Media fitness\t %.2f\n", mediaFitness);
+    fprintf(arquivo, "Devio padrao\t %.2f\n", sigma);
 
     fclose(arquivo);
 }

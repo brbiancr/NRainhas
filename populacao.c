@@ -1,5 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
+#include "populacao.h"
+#include "fitness.h"
+#include "ordenacao.h"
+#include "operadoresDeReproducao.h"
+#include "selecao.h"
 
 /*
     -------------------

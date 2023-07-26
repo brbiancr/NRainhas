@@ -2,13 +2,19 @@
 #include <stdlib.h>
 #include <time.h>
 #include "main.h"
+#include "fitness.h"
+#include "operadoresDeReproducao.h"
+#include "ordenacao.h"
+#include "populacao.h"
+#include "print.h"
+#include "selecao.h"
 
 int main(){
     // Calcular o tempo de execucao do programa
     double time_spent = 0.0;
     clock_t begin = clock();
 
-    int i, result1, result2;
+    int i;
     int *fitnessTorneio;
     int **individuosTorneio, **pai, **tabuleiro, **proximaPopulacao;
     FILE *arquivo;

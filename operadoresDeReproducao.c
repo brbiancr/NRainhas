@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
+#include "operadoresDeReproducao.h"
 
 /*
     ----------------------
@@ -70,7 +72,7 @@ void cruzamentoDoisPontos(int *indice, int **pai, int **proximaPopulacao){
     Adiciona o filho gerado na ger��o seguinte
     Retorna o indice do ultimo indiv�duo da popula��o.
 */
-int cruzamentoUmPonto(int *indice, int **pai, int **proximaPopulacao){
+void cruzamentoUmPonto(int *indice, int **pai, int **proximaPopulacao){
     int i;
     int corte;
     int filho[TAMANHOTABULEIRO];
