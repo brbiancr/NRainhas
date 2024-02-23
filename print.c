@@ -18,7 +18,7 @@ void mostraPopulacao(){
     int i, j;
     FILE *arquivo;
 
-    arquivo = fopen("dadosNRainhas.xls", "a+");
+    arquivo = fopen("dadosNRainhas.txt", "a+");
     if(arquivo == NULL){
         printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
     }
