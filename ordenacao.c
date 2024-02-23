@@ -56,15 +56,4 @@ void ordenaTorneio(int **individuosTorneio, int *fitnessTorneio){
         for (k=0; k<TAMANHOTABULEIRO; k++)
             individuosTorneio[j][k] = auxiliarA[k];
     }
-
-    /*
-    printf ("Torneio ordenado pelo fitness: \n");
-    for (i=0; i<QUANTIDADEINDIVIDUOSPORTORNEIO; i++){
-        for (j=0; j<TAMANHOTABULEIRO; j++)
-            printf ("%d ", individuosTorneio[i][j]);
-        printf (" => ");
-        printf("%d\n", fitnessTorneio[i]);
-    }
-    printf("\n");
-    */
 }
