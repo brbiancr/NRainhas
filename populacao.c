@@ -28,13 +28,11 @@ void atualizaPopulacao(int **proximaPopulacao){
     -----------------
     Evolui a populacao ate que a quantidade de evolucoes sejam alcancadas ou ate que uma solucao otima seja encontrada
 */
-void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnessTorneio, int **tabuleiro, int **proximaPopulacao){
+int evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnessTorneio, int **tabuleiro, int **proximaPopulacao, int encontrouSolucao){
     int indiceInicio = 0;
     int *indice = &indiceInicio;
 
-    //printf("RODADA: %d\n", rodada+1);
-
-    fitness(tabuleiro, fitnessDaPopulacao);
+    encontrouSolucao = fitness(tabuleiro, fitnessDaPopulacao, encontrouSolucao);
     ordenaPopulacao();
     elitismo(indice, proximaPopulacao);
     do{
@@ -44,6 +42,8 @@ void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnes
             case 2: selecaoRoleta(pai);
                     break;
             case 3: selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
+                    break;
+            case 4: selecaoTorneioDosDissimilares(individuosTorneio, pai, fitnessTorneio);
                     break;
         }
 
@@ -55,13 +55,14 @@ void evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnes
         }
 
         mutacao(indice, proximaPopulacao);
-        //printf ("Indice: %d\n", indice);
+
     } while (indiceInicio < TAMANHOPOPULACAO);
 
     atualizaPopulacao(proximaPopulacao);
-    fitness(tabuleiro, fitnessDaPopulacao);
+    encontrouSolucao = fitness(tabuleiro, fitnessDaPopulacao, encontrouSolucao);
     ordenaPopulacao();
 
+    return encontrouSolucao;
 }
 
 /*
@@ -95,9 +96,4 @@ void inicializaPopulacao(){
             } while(cont == TAMANHOTABULEIRO);
         }
     }
-
-    /*
-    printf ("***POPULACAO INICIAL***\n");
-    mostraPopulacao();
-    */
 }
