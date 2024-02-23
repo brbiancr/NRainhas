@@ -17,35 +17,8 @@ int main(){
     int i;
     int *fitnessTorneio;
     int **individuosTorneio, **pai, **tabuleiro, **proximaPopulacao;
+    int encontrouSolucao = 0;
     FILE *arquivo;
-
-    arquivo = fopen("dadosNRainhas.xls", "a+");
-    if(arquivo == NULL){
-        printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
-        fclose(arquivo);
-        return 0;
-    } else{
-        fprintf(arquivo, "Tamanho da populacao\t%d\n", TAMANHOPOPULACAO);
-        fprintf(arquivo, "Tamanho do tabuleiro\t %d\n", TAMANHOTABULEIRO);
-        fprintf(arquivo, "Quantidade de individuos por torneio\t %d\n", QUANTIDADEINDIVIDUOSPORTORNEIO);
-        fprintf(arquivo, "Taxa de elitismo\t %.2f\n", TAXAELITISMO);
-        fprintf(arquivo, "Taxa de mutacao\t %.2f\n", TAXAMUTACAO);
-        fprintf(arquivo, "Quantidade de rodadas\t %d\n", RODADAS);
-        fprintf(arquivo, "Tipo de selecao\t");
-        if(TIPODESELECAO == 1)
-            fprintf(arquivo, "Selecao aleatoria\n");
-        if(TIPODESELECAO == 2)
-            fprintf(arquivo, "Selecao por roleta\n");
-        if(TIPODESELECAO == 3)
-            fprintf(arquivo, "Selecao por torneio\n");
-        fprintf(arquivo, "Tipo de cruzamento\t ");
-        if(TIPODECRUZAMENTO == 1)
-            fprintf(arquivo, "Cruzamento de um ponto\n");
-        if(TIPODECRUZAMENTO == 2)
-            fprintf(arquivo, "Cruzamento de dois pontos\n");
-        fclose(arquivo);
-    }
-
 
     // Alocando memoria
     populacaoAtual = (int**) malloc(sizeof(int*) * TAMANHOPOPULACAO);
@@ -77,13 +50,51 @@ int main(){
     }
 
     srand(time(NULL));
+
     inicializaPopulacao();
-    for (i=0; i<RODADAS; i++){
-        evoluiPopulacao(i, individuosTorneio, pai, fitnessTorneio, tabuleiro, proximaPopulacao);
+
+    for (i = 0; encontrouSolucao == 0; i++){
+        encontrouSolucao = evoluiPopulacao(i, individuosTorneio, pai, fitnessTorneio, tabuleiro, proximaPopulacao, encontrouSolucao);
+        printf("Rodada %d\n", i+1);
     }
 
-    printf("- Populacao Final -\n");
-    mostraPopulacao();
+    // Calcular o tempo de execucao do programa
+    clock_t end = clock();
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+
+    arquivo = fopen("dadosNRainhas.txt", "a+");
+    if(arquivo == NULL){
+        printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
+        fclose(arquivo);
+        return 0;
+    } else{
+        fprintf(arquivo, "Tamanho da populacao\t%d\n", TAMANHOPOPULACAO);
+        fprintf(arquivo, "Tamanho do tabuleiro\t %d\n", TAMANHOTABULEIRO);
+        fprintf(arquivo, "Quantidade de individuos por torneio\t %d\n", QUANTIDADEINDIVIDUOSPORTORNEIO);
+        fprintf(arquivo, "Taxa de elitismo\t %.2f\n", TAXAELITISMO);
+        fprintf(arquivo, "Taxa de mutacao\t %.2f\n", TAXAMUTACAO);
+        fprintf(arquivo, "Tipo de selecao\t");
+        if(TIPODESELECAO == 1)
+            fprintf(arquivo, "Selecao aleatoria\n");
+        if(TIPODESELECAO == 2)
+            fprintf(arquivo, "Selecao por roleta\n");
+        if(TIPODESELECAO == 3)
+            fprintf(arquivo, "Selecao por torneio\n");
+        if(TIPODESELECAO == 4)
+            fprintf(arquivo, "Selecao por torneio dos dissimilares\n");
+        fprintf(arquivo, "Tipo de cruzamento\t ");
+        if(TIPODECRUZAMENTO == 1)
+            fprintf(arquivo, "Cruzamento de um ponto\n");
+        if(TIPODECRUZAMENTO == 2)
+            fprintf(arquivo, "Cruzamento de dois pontos\n");
+
+        fprintf(arquivo, "Rodadas\t %d\n\n", i+1);
+        fprintf(arquivo, "Tempo de execucao\t %f\n\n", time_spent);
+
+        mostraPopulacao();
+
+        fclose(arquivo);
+    }
 
     // Liberando memoria alocada
     free (*populacaoAtual);
@@ -98,20 +109,7 @@ int main(){
     free (fitnessTorneio);
     free (*tabuleiro);
     free (tabuleiro);
-
-    // Calcular o tempo de execucao do programa
-    clock_t end = clock();
-    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Tempo de execucao: %f", time_spent);
-    arquivo = fopen("dadosNRainhas.xls", "a+");
-    if(arquivo == NULL){
-        printf("ERRO AO ABRIR ARQUIVO PARA SALVAR DADOS!\n");
-        fclose(arquivo);
-        return 0;
-    } else{
-        fprintf(arquivo, "Tempo de execucao\t %f\n\n", time_spent);
-        fclose(arquivo);
-    }
+    free (arquivo);
 
     return 0;
 }
