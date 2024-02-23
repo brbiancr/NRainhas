@@ -8,7 +8,7 @@
     ---------
     Avalia a aptidao de todos os individuos da populacao.
 */
-void fitness(int **tabuleiro, int *fitnessDaPopulacao){
+int fitness(int **tabuleiro, int *fitnessDaPopulacao, int encontrouSolucao){
     int i, j, k, l, m;
     int fitnessRainha, colisao;
     int auxiliar1, auxiliar2;
@@ -17,8 +17,6 @@ void fitness(int **tabuleiro, int *fitnessDaPopulacao){
         fitnessDaPopulacao[i]= 0 ;
 
         posicionaRainhas(i, tabuleiro);
-
-        //mostraTabuleiro(tabuleiro);
 
         for (j=0; j<TAMANHOTABULEIRO; j++){
             for (k=0; k<TAMANHOTABULEIRO; k++){
@@ -69,14 +67,16 @@ void fitness(int **tabuleiro, int *fitnessDaPopulacao){
 
                     (colisao > 0) ? (fitnessRainha = 0) : (fitnessRainha = 1);
 
-                    //printf ("Fitness da rainha: %d\n", fitnessRainha);
-
                     fitnessDaPopulacao[i] += fitnessRainha;
                 }
             }
 
         }
+        if(fitnessDaPopulacao[i] == TAMANHOTABULEIRO)
+            encontrouSolucao = 1;
     }
+
+    return encontrouSolucao;
 }
 
 /*
