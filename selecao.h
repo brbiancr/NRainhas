@@ -4,3 +4,4 @@ void elitismo(int*, int **proximaPopulacao);
 void selecaoAleatoria(int **pai);
 void selecaoRoleta(int **pai);
 void selecaoTorneio(int **individuosTorneio, int **pai, int *fitnessTorneio);
+void selecaoTorneioDosDissimilares(int **individuosTorneio, int **pai, int *fitnessTorneio);
