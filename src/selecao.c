@@ -11,7 +11,7 @@
     Copia para proximaPopulacao uma porcentagem TAXAELITISMO dos individuos com maior fitness da populacaoAtual.
     Retorna a posicao do ultimo individuo da populacao
 */
-void elitismo(int* indice, int **proximaPopulacao){
+void elitismo(int* indice, int **proximaPopulacao, int **populacaoAtual){
     int i, j;
     for (i=0; i<(TAMANHOPOPULACAO*(TAXAELITISMO*100))/100; i++){
         for (j=0; j<TAMANHOTABULEIRO; j++)
@@ -28,7 +28,7 @@ void elitismo(int* indice, int **proximaPopulacao){
     Seleciona de forma aleat�ria os dois individuos pais.
     O processo ocorre at� que ambos os pais sejam diferentes entre si.
 */
-void selecaoAleatoria(int **pai){
+void selecaoAleatoria(int **pai, int **populacaoAtual){
     int i, j;
     int individuo;
     int cont = 0;
@@ -60,7 +60,7 @@ void selecaoAleatoria(int **pai){
     Gira a roleta e seleciona um pai.
     O precesso se repete at� que exista dois pais diferentes entre si.
 */
-void selecaoRoleta(int **pai){
+void selecaoRoleta(int **pai, int *fitnessDaPopulacao, int **populacaoAtual){
     int i, j;
     int k = 0;
     int somaFitness = 0;
@@ -106,7 +106,7 @@ void selecaoRoleta(int **pai){
     O individuo com maior aptid�o entre os selecionados � escolhido para ser um pai.
     O precesso se repete at� que exista dois pais diferentes entre si.
 */
-void selecaoTorneio(int **individuosTorneio, int **pai, int *fitnessTorneio){
+void selecaoTorneio(int **individuosTorneio, int **pai, int *fitnessTorneio, int **populacaoAtual, int *fitnessDaPopulacao){
     int i, j, k;
     int individuo[QUANTIDADEINDIVIDUOSPORTORNEIO];
     int cont = 0;
@@ -159,7 +159,7 @@ void selecaoTorneio(int **individuosTorneio, int **pai, int *fitnessTorneio){
     São selecionados N individuos distintos entre si para participar do torneio.
     O individuo com menor aptidão é escolhido para ser o pai 2.
 */
-void selecaoTorneioDosDissimilares(int **individuosTorneio, int **pai, int *fitnessTorneio){
+void selecaoTorneioDosDissimilares(int **individuosTorneio, int **pai, int *fitnessTorneio, int **populacaoAtual, int *fitnessDaPopulacao){
     int i, j;
     int individuo[QUANTIDADEINDIVIDUOSPORTORNEIO];
     int cont = 0;
