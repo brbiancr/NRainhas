@@ -15,8 +15,8 @@ int main(){
     clock_t begin = clock();
 
     int i;
-    int *fitnessTorneio;
-    int **individuosTorneio, **pai, **tabuleiro, **proximaPopulacao;
+    int *fitnessTorneio, fitnessDaPopulacao;
+    int **individuosTorneio, **pai, **tabuleiro, **proximaPopulacao, **populacaoAtual;
     int encontrouSolucao = 0;
     FILE *arquivo;
 
@@ -51,10 +51,10 @@ int main(){
 
     srand(time(NULL));
 
-    inicializaPopulacao();
+    inicializaPopulacao(populacaoAtual);
 
     for (i = 0; encontrouSolucao == 0; i++){
-        encontrouSolucao = evoluiPopulacao(i, individuosTorneio, pai, fitnessTorneio, tabuleiro, proximaPopulacao, encontrouSolucao);
+        encontrouSolucao = evoluiPopulacao(i, individuosTorneio, pai, fitnessTorneio, tabuleiro, proximaPopulacao, encontrouSolucao, populacaoAtual, fitnessDaPopulacao);
         printf("Rodada %d\n", i+1);
     }
 
@@ -91,7 +91,7 @@ int main(){
         fprintf(arquivo, "Rodadas\t %d\n\n", i+1);
         fprintf(arquivo, "Tempo de execucao\t %f\n\n", time_spent);
 
-        mostraPopulacao();
+        mostraPopulacao(populacaoAtual, fitnessDaPopulacao);
 
         fclose(arquivo);
     }
