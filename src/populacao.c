@@ -13,7 +13,7 @@
     -------------------
 
 */
-void atualizaPopulacao(int **proximaPopulacao){
+void atualizaPopulacao(int **proximaPopulacao, int **populacaoAtual){
     int i, j;
 
     for (i=0; i<TAMANHOPOPULACAO; i++){
@@ -28,22 +28,22 @@ void atualizaPopulacao(int **proximaPopulacao){
     -----------------
     Evolui a populacao ate que a quantidade de evolucoes sejam alcancadas ou ate que uma solucao otima seja encontrada
 */
-int evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnessTorneio, int **tabuleiro, int **proximaPopulacao, int encontrouSolucao){
+int evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitnessTorneio, int **tabuleiro, int **proximaPopulacao, int encontrouSolucao, int **populacaoAtual, int *fitnessDaPopulacao){
     int indiceInicio = 0;
     int *indice = &indiceInicio;
 
-    encontrouSolucao = fitness(tabuleiro, fitnessDaPopulacao, encontrouSolucao);
-    ordenaPopulacao();
-    elitismo(indice, proximaPopulacao);
+    encontrouSolucao = fitness(tabuleiro, fitnessDaPopulacao, encontrouSolucao, populacaoAtual);
+    ordenaPopulacao(populacaoAtual, fitnessDaPopulacao);
+    elitismo(indice, proximaPopulacao, populacaoAtual);
     do{
         switch (TIPODESELECAO){
-            case 1: selecaoAleatoria(pai);
+            case 1: selecaoAleatoria(pai, populacaoAtual);
                     break;
-            case 2: selecaoRoleta(pai);
+            case 2: selecaoRoleta(pai, fitnessDaPopulacao, populacaoAtual);
                     break;
-            case 3: selecaoTorneio(individuosTorneio, pai, fitnessTorneio);
+            case 3: selecaoTorneio(individuosTorneio, pai, fitnessTorneio, populacaoAtual, fitnessDaPopulacao);
                     break;
-            case 4: selecaoTorneioDosDissimilares(individuosTorneio, pai, fitnessTorneio);
+            case 4: selecaoTorneioDosDissimilares(individuosTorneio, pai, fitnessTorneio, populacaoAtual, fitnessDaPopulacao);
                     break;
         }
 
@@ -58,9 +58,9 @@ int evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitness
 
     } while (indiceInicio < TAMANHOPOPULACAO);
 
-    atualizaPopulacao(proximaPopulacao);
-    encontrouSolucao = fitness(tabuleiro, fitnessDaPopulacao, encontrouSolucao);
-    ordenaPopulacao();
+    atualizaPopulacao(proximaPopulacao, populacaoAtual);
+    encontrouSolucao = fitness(tabuleiro, fitnessDaPopulacao, encontrouSolucao, populacaoAtual);
+    ordenaPopulacao(populacaoAtual, fitnessDaPopulacao);
 
     return encontrouSolucao;
 }
@@ -72,7 +72,7 @@ int evoluiPopulacao(int rodada, int **individuosTorneio, int **pai, int *fitness
     Inicializa de forma aleatoria a populacao inicial.
     A populacao inicial nao deve ter individuos iguais.
 */
-void inicializaPopulacao(){
+void inicializaPopulacao(int **populacaoAtual){
     int i, j, k, l;
     int cont;
 
