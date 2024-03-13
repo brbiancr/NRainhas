@@ -14,7 +14,7 @@
     Mostra o desvio padrao do fintess dos individuos
     Salva todos esses dados em um arquivo "dadosNRainhas.xls"
 */
-void mostraPopulacao(){
+void mostraPopulacao(int **populacaoAtual, int *fitnessDaPopulacao){
     int i, j;
     FILE *arquivo;
 
