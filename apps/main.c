@@ -15,7 +15,7 @@ int main(){
     clock_t begin = clock();
 
     int i;
-    int *fitnessTorneio, fitnessDaPopulacao;
+    int *fitnessTorneio, *fitnessDaPopulacao;
     int **individuosTorneio, **pai, **tabuleiro, **proximaPopulacao, **populacaoAtual;
     int encontrouSolucao = 0;
     FILE *arquivo;
