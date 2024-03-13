@@ -1,4 +1,4 @@
 #include "main.h"
 
-void mostraPopulacao();
+void mostraPopulacao(int **populacaoAtual, int *fitnessDaPopulacao);
 void mostraTabuleiro(int **tabuleiro);
