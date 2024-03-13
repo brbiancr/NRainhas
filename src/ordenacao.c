@@ -9,7 +9,7 @@
     Ordena os individuos da populacao de acordo com seu fitness.
     A ordenacao e feita em ordem crescente.
 */
-void ordenaPopulacao(){
+void ordenaPopulacao(int **populacaoAtual, int *fitnessDaPopulacao){
     int i, j, k;
     int auxiliar;
     int auxiliarA[TAMANHOTABULEIRO];
