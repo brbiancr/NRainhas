@@ -8,7 +8,7 @@
     ---------
     Avalia a aptidao de todos os individuos da populacao.
 */
-int fitness(int **tabuleiro, int *fitnessDaPopulacao, int encontrouSolucao){
+int fitness(int **tabuleiro, int *fitnessDaPopulacao, int encontrouSolucao, int **populacaoAtual){
     int i, j, k, l, m;
     int fitnessRainha, colisao;
     int auxiliar1, auxiliar2;
@@ -16,7 +16,7 @@ int fitness(int **tabuleiro, int *fitnessDaPopulacao, int encontrouSolucao){
     for (i=0; i<TAMANHOPOPULACAO; i++){
         fitnessDaPopulacao[i]= 0 ;
 
-        posicionaRainhas(i, tabuleiro);
+        posicionaRainhas(i, tabuleiro, populacaoAtual);
 
         for (j=0; j<TAMANHOTABULEIRO; j++){
             for (k=0; k<TAMANHOTABULEIRO; k++){
@@ -87,7 +87,7 @@ int fitness(int **tabuleiro, int *fitnessDaPopulacao, int encontrouSolucao){
     0 indica posicao vazia
     1 indica Rainhas
 */
-void posicionaRainhas(int individuo, int **tabuleiro){
+void posicionaRainhas(int individuo, int **tabuleiro, int **populacaoAtual){
     int i, j;
     int linhaDaRainha;
 
