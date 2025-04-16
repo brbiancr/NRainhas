@@ -1,6 +1,6 @@
 <h1> N rainhas </h1>
 
-> Status do projeto: Em desenvolvimento
+> Status do projeto: Finalizado
 
 Algoritmo Genético em Linguagem C desenvolvido pela aluna e bolsista PIBIC/CNPQ Bianca Beatriz Ribeiro do curso de Ciênca da Computação da Universidade Federal de Uberlândia.
 
